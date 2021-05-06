@@ -9,9 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class FullScreenNoteFragment extends Fragment {
+public class DetailsFragment extends Fragment {
 
-    public FullScreenNoteFragment() {
+    public DetailsFragment() {
         // Required empty public constructor
     }
 

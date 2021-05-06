@@ -1,6 +1,5 @@
 package com.example.notes;
 
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
@@ -17,18 +16,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-public class NoteDetailsFragment extends Fragment {
+public class MainFragment extends Fragment {
 
     private boolean isLandscape;
 
-    public NoteDetailsFragment() {
+    public MainFragment() {
         // Required empty public constructor
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_note_details, container, false);
+        return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
     @Override
@@ -48,21 +47,10 @@ public class NoteDetailsFragment extends Fragment {
             layoutView.addView(tv);
             final int fi = i;
             tv.setOnClickListener(v -> {
-                if(isLandscape){
-                    showFragment();
-                } else {
-                    showActivityTwo();
-                }
+                showFragment();
             });
         }
     }
-
-    private void showActivityTwo() {
-        Intent intent = new Intent();
-        intent.setClass(getActivity(), NoteDetailsActivity.class);
-        startActivity(intent);
-    }
-
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -72,10 +60,14 @@ public class NoteDetailsFragment extends Fragment {
     }
 
     private void showFragment() {
-        FullScreenNoteFragment details = new FullScreenNoteFragment();
+        DetailsFragment details = new DetailsFragment();
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container_land, details);
+        if (isLandscape) {
+            fragmentTransaction.replace(R.id.fragment_container_land, details);
+        } else {
+            fragmentTransaction.replace(R.id.fragment_container, details);
+        }
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         fragmentTransaction.commit();
     }
