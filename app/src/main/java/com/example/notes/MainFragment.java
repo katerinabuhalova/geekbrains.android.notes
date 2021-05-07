@@ -43,7 +43,7 @@ public class MainFragment extends Fragment {
             String note = notes[i];
             TextView tv = new TextView(getContext());
             tv.setText(note);
-            tv.setTextSize(50);
+            tv.setTextSize(30);
             layoutView.addView(tv);
             final int fi = i;
             tv.setOnClickListener(v -> {
