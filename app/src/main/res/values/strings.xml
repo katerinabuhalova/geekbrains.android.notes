@@ -1,3 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Notes</string>
+    <string-array name="notes">
+        <item>название заметки</item>
+        <item>описание заметки</item>
+        <item>дата создания</item>
+    </string-array>
+    <string name="hello_Katy">Hello Katy</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
