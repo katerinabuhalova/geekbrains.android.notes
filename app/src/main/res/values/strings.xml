@@ -6,6 +6,19 @@
         <item>Second Note</item>
         <item>Third Note</item>
     </string-array>
+
+    <string-array name="descriptions">
+        <item>First descriptions</item>
+        <item>Second descriptions</item>
+        <item>Third descriptions</item>
+    </string-array>
+
+    <string-array name="date">
+        <item>01/08.2021</item>
+        <item>02/08.2021</item>
+        <item>03/08.2021</item>
+    </string-array>
+
     <string name="hello_Katy">Hello Katy</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
