@@ -38,7 +38,6 @@ public class NotesCollectionFragment  extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_notes_collection, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view_lines);
 
