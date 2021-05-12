@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.notes.R;
@@ -16,12 +17,20 @@ import com.example.notes.date.NotesSource;
 public class NotesCollectionAdapter extends RecyclerView.Adapter<NotesCollectionAdapter.ViewHolder> {
     private final static String TAG = "SocialNetworkAdapter";
     private NotesSource dataSource;
+    private Fragment fragment;
+
+    private int menuPosition;
 
 
     private OnItemClickListener itemClickListener;
 
-    public NotesCollectionAdapter(NotesSource dataSource) {
+    public NotesCollectionAdapter(NotesSource dataSource, Fragment fragment) {
         this.dataSource = dataSource;
+        this.fragment = fragment;
+    }
+
+    public int getMenuPosition() {
+        return menuPosition;
     }
 
     @NonNull
@@ -65,6 +74,8 @@ public class NotesCollectionAdapter extends RecyclerView.Adapter<NotesCollection
             description = itemView.findViewById(R.id.description);
             date = itemView.findViewById(R.id.date);
             noteView = itemView.findViewById(R.id.noteView);
+
+            registerContextMenu(itemView);
             noteView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -73,6 +84,19 @@ public class NotesCollectionAdapter extends RecyclerView.Adapter<NotesCollection
                     }
                 }
             });
+        }
+
+        private void registerContextMenu(@NonNull View itemView) {
+            if (fragment != null){
+                itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        menuPosition = getLayoutPosition();
+                        return false;
+                    }
+                });
+                fragment.registerForContextMenu(itemView);
+            }
         }
 
         public void setData(Note cardData) {

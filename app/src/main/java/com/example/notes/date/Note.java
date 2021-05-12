@@ -15,8 +15,16 @@ public class Note {
         return nameNote;
     }
 
+    public void setNameNote(String nameNote) {
+        this.nameNote = nameNote;
+    }
+
     public String getDescriptionNote() {
         return descriptionNote;
+    }
+
+    public void setDescriptionNote(String descriptionNote) {
+        this.descriptionNote = descriptionNote;
     }
 
     public String getDate() {

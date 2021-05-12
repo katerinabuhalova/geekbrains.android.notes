@@ -60,15 +60,15 @@ public class MainFragment extends Fragment {
     }
 
     private void showFragment() {
-        DetailsFragment details = new DetailsFragment();
-        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        if (isLandscape) {
-            fragmentTransaction.replace(R.id.fragment_container_land, details);
-        } else {
-            fragmentTransaction.replace(R.id.fragment_container, details);
-        }
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        fragmentTransaction.commit();
+//        DetailsFragment details = new DetailsFragment();
+//        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        if (isLandscape) {
+//            fragmentTransaction.replace(R.id.fragment_container_land, details);
+//        } else {
+//            fragmentTransaction.replace(R.id.fragment_container, details);
+//        }
+//        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+//        fragmentTransaction.commit();
     }
 }
