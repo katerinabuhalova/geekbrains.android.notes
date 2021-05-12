@@ -7,18 +7,16 @@
     android:layout_height="match_parent"
     tools:ignore="MissingDefaultResource">
 
-    <fragment
-        android:id="@+id/notes"
-        android:name ="com.example.notes.NoteDetailsFragment"
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:layout_width="0px"
-        android:layout_height="match_parent" />
+        android:layout_width="0px"/>
 
     <FrameLayout
         android:id="@+id/fragment_container_land"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:layout_width="0px">
-    </FrameLayout>
+        android:layout_width="0px"/>
 
 </LinearLayout>
