@@ -23,7 +23,11 @@ import com.example.notes.DetailsFragment;
 import com.example.notes.R;
 import com.example.notes.date.Note;
 import com.example.notes.date.NotesSource;
+import com.example.notes.date.NotesSourceFirebaseImpl;
 import com.example.notes.date.NotesSourceImpl;
+import com.example.notes.date.NotesSourceResponse;
+
+import java.util.Calendar;
 
 public class NotesCollectionFragment  extends Fragment {
 
@@ -39,9 +43,6 @@ public class NotesCollectionFragment  extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_notes_collection, container, false);
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_view_lines);
-
-        data = new NotesSourceImpl(getResources()).init();
         initView(view);
         setHasOptionsMenu(true);
         return view;
@@ -58,7 +59,7 @@ public class NotesCollectionFragment  extends Fragment {
             case R.id.action_add:
                 data.addNote(new Note("Note" + data.size(),
                         "description" + data.size(),
-                        java.time.LocalDate.now().toString()));
+                Calendar.getInstance().getTime().toString()));
                 adapter.notifyItemInserted(data.size() - 1);
                 recyclerView.scrollToPosition(data.size() - 1);
                 return true;
@@ -72,8 +73,9 @@ public class NotesCollectionFragment  extends Fragment {
 
     private void initView(View view) {
         recyclerView = view.findViewById(R.id.recycler_view_lines);
-        data = new NotesSourceImpl(getResources()).init();
         initRecyclerView();
+        data = new NotesSourceFirebaseImpl().init(notes -> adapter.notifyDataSetChanged());
+        adapter.setDataSource(data);
     }
 
     private void initRecyclerView() {
@@ -87,7 +89,7 @@ public class NotesCollectionFragment  extends Fragment {
         itemDecoration.setDrawable(getResources().getDrawable(R.drawable.separator));
         recyclerView.addItemDecoration(itemDecoration);
 
-        adapter = new NotesCollectionAdapter(data, this);
+        adapter = new NotesCollectionAdapter(this);
         recyclerView.setAdapter(adapter);
         adapter.SetOnItemClickListener((view, position) ->
         {

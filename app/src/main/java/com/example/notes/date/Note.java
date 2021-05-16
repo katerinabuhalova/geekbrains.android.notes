@@ -1,6 +1,7 @@
 package com.example.notes.date;
 
 public class Note {
+    private String id;
     private String nameNote;
     private String descriptionNote;
     private String date;
@@ -30,4 +31,13 @@ public class Note {
     public String getDate() {
         return date;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
 }
