@@ -24,9 +24,13 @@ public class NotesCollectionAdapter extends RecyclerView.Adapter<NotesCollection
 
     private OnItemClickListener itemClickListener;
 
-    public NotesCollectionAdapter(NotesSource dataSource, Fragment fragment) {
-        this.dataSource = dataSource;
+    public NotesCollectionAdapter(Fragment fragment) {
         this.fragment = fragment;
+    }
+
+    public void setDataSource(NotesSource dataSource){
+        this.dataSource = dataSource;
+        notifyDataSetChanged();
     }
 
     public int getMenuPosition() {

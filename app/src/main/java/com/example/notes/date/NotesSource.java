@@ -1,7 +1,10 @@
 package com.example.notes.date;
 
 public interface NotesSource {
+
+    NotesSource init(NotesSourceResponse notesSourceResponse);
     Note getNoteData(int position);
+
     int size();
 
     void deleteNote(int position);

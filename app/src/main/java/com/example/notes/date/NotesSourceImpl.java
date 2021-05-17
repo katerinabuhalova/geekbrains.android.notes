@@ -17,12 +17,15 @@ public class NotesSourceImpl implements NotesSource {
         this.resources = resources;
     }
 
-    public NotesSourceImpl init() {
+    public NotesSource init(NotesSourceResponse notesSourceResponse) {
         String[] notes = resources.getStringArray(R.array.notes);
         String[] descriptions = resources.getStringArray(R.array.descriptions);
         String[] dates = resources.getStringArray(R.array.date);
         for (int i = 0; i < descriptions.length; i++) {
             dataSource.add(new Note(notes[i], descriptions[i], dates[i]));
+        }
+        if (notesSourceResponse != null){
+            notesSourceResponse.initialized(this);
         }
         return this;
     }
@@ -45,6 +48,8 @@ public class NotesSourceImpl implements NotesSource {
 
     @Override
     public void updateNote(int position, Note note) {
+        Note oldNote = dataSource.get(position);
+        note.setId(oldNote.getId());
         dataSource.set(position, note);
     }
 
