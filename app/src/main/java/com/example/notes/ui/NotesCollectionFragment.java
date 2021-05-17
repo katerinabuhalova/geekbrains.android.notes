@@ -101,7 +101,7 @@ public class NotesCollectionFragment  extends Fragment {
     {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        DetailsFragment detailsFragment = new DetailsFragment(data, position);
+        DetailsFragment detailsFragment = DetailsFragment.newInstance(data, position);
         fragmentTransaction.replace(R.id.fragment_container, detailsFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();

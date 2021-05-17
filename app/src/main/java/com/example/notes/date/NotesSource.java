@@ -1,6 +1,8 @@
 package com.example.notes.date;
 
-public interface NotesSource {
+import java.io.Serializable;
+
+public interface NotesSource extends Serializable {
 
     NotesSource init(NotesSourceResponse notesSourceResponse);
     Note getNoteData(int position);

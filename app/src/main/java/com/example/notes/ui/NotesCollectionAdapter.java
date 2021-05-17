@@ -17,7 +17,7 @@ import com.example.notes.date.NotesSource;
 public class NotesCollectionAdapter extends RecyclerView.Adapter<NotesCollectionAdapter.ViewHolder> {
     private final static String TAG = "SocialNetworkAdapter";
     private NotesSource dataSource;
-    private Fragment fragment;
+    private final Fragment fragment;
 
     private int menuPosition;
 

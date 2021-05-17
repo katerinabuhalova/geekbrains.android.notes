@@ -16,38 +16,50 @@ import com.example.notes.date.NotesSource;
 
 
 public class DetailsFragment extends Fragment {
-    private final NotesSource data;
-    private final int position;
+    private NotesSource data;
+    private int position;
     private EditText editTextName;
     private EditText editTextDescription;
-    private DatePicker datePicker;
+    private EditText editTextDate;
     private Button saveButton;
+    private Note note;
 
-    public DetailsFragment(NotesSource data, int position) {
-
-        this.data = data;
-        this.position = position;
+    public static DetailsFragment newInstance(NotesSource data, int position) {
+        DetailsFragment f = new DetailsFragment();
+        Bundle args = new Bundle();
+        args.putInt("position", position);
+        args.putSerializable("data", data);
+        f.setArguments(args);
+        return f;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_details, container, false);
-
+        position = getArguments().getInt("position", 0);
+        data = (NotesSource) getArguments().getSerializable("data");
         editTextName = view.findViewById(R.id.name);
         editTextDescription = view.findViewById(R.id.description);
+        editTextDate = view.findViewById(R.id.date);
         saveButton = view.findViewById(R.id.button_save);
-        Note note = data.getNoteData(position);
+
+        note = data.getNoteData(position);
         editTextName.setText(note.getNameNote());
         editTextDescription.setText(note.getDescriptionNote());
+        editTextDate.setText(note.getDate());
         saveButton.setOnClickListener(v -> {
             saveNote();
         });
+
+
         return view;
     }
 
     private void saveNote() {
-        Note note = new Note(editTextName.getText().toString(), editTextDescription.getText().toString(), "01.01.2021");
+      note.setNameNote(editTextName.getText().toString());
+      note.setDescriptionNote(editTextDescription.getText().toString());
+      note.setDate(editTextDate.getText().toString());
         data.updateNote(position, note);
     }
 }
