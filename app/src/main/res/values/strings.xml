@@ -32,4 +32,11 @@
     <string name="name">Name</string>
     <string name="description">Description</string>
     <string name="Date">date</string>
+
+    <string name="name1">Alert Dialog</string>
+    <string name="alert_dialog_1">Alert Dialog с одной кнопкой</string>
+    <string name="exclamation">Важное сообщение!</string>
+    <string name="press_button">Вы хотите удалить заметку?</string>
+    <string name="button">Да</string>
+    <string name="button1">Нет</string>
 </resources>
