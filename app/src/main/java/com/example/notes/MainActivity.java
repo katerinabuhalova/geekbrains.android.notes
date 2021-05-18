@@ -2,6 +2,7 @@ package com.example.notes;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -9,9 +10,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.notes.ui.NotesCollectionFragment;
@@ -25,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initView();
         addFragment(NotesCollectionFragment.newInstance());
-
     }
 
     private void initView() {
@@ -65,5 +68,4 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
-
 }
